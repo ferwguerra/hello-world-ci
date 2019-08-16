@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class HelloApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HelloApplication.class, "--server.port=3434");
+		SpringApplication.run(HelloApplication.class, args);
 	}
 
 }
