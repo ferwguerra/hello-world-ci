@@ -21,6 +21,6 @@ public class NameControllerShould {
         NameController nameController = new NameController();
         nameController.setNameService(nameService);
 
-        assertThat(nameController.getName(), is("Fernando"));
+        assertThat(nameController.getName(), is("Fernando2"));
     }
 }
