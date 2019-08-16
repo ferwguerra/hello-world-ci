@@ -1,5 +1,6 @@
 FROM openjdk:8-jdk-alpine
-WORKDIR /
-ADD hello-0.0.1-SNAPSHOT.jar hello-0.0.1-SNAPSHOT.jar
+VOLUME /tmp
 EXPOSE 8080
-CMD java - jar hello-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE=target/hello-0.0.1-SNAPSHOT.jar
+ADD ${JAR_FILE} hello-world.jar
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/hello-world.jar"]
