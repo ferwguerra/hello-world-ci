@@ -6,7 +6,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 import static org.mockito.BDDMockito.given;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -21,6 +21,7 @@ public class NameControllerShould {
         NameController nameController = new NameController();
         nameController.setNameService(nameService);
 
+        assertNotNull(nameController.getName());
         assertThat(nameController.getName(), is("Fernando"));
     }
 }
