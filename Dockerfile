@@ -1,4 +1,4 @@
 FROM openjdk:8-jdk-alpine
 VOLUME /tmp
-COPY hello-0.0.1-SNAPSHOT.jar app.jar
+COPY target/hello*.jar $CATALINA_HOME/app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
