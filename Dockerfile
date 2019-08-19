@@ -1,7 +1,12 @@
 # Install maven and compile project
 FROM maven:3.5-jdk-8 as maven
-COPY . /app
+# copy the project files
+COPY ./pom.xml /app/pom.xml
 WORKDIR /app
+# build all dependencies
+RUN mvn dependency:go-offline -B
+# copy your other files
+COPY ./src /app/src
 RUN mvn package
 
 
