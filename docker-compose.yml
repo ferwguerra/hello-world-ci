@@ -1,11 +1,12 @@
-version: '3.7'
+version: '2.2'
 services:
   app:
     image: ferwguerra/hello-world:latest
     ports:
       - 8080:8080
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
   db:
     image: ferwguerra/my_mysql
