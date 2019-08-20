@@ -7,7 +7,7 @@ WORKDIR /app
 RUN mvn dependency:go-offline -B
 # copy your other files
 COPY ./src /app/src
-RUN mvn package -Dmaven.test.skip=true
+RUN mvn package
 
 
 FROM openjdk:8-jdk-alpine
