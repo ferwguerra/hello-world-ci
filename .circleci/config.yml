@@ -4,8 +4,8 @@ executors:
     environment:
       IMAGE_NAME: ferwguerra/hello-world
     docker:
-      - image: circleci/buildpack-deps:stretch
-      #- image: circleci/openjdk:8-jdk
+      #- image: circleci/buildpack-deps:stretch
+      - image: circleci/openjdk:8-jdk
 jobs:
   build:
     executor: docker-publisher
