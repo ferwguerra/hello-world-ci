@@ -78,8 +78,8 @@ workflows:
               only: master
       - aws-ecr/build_and_push_image:
           region: us-east-2
-          account-url: 300563897675.dkr.ecr.us-east-2.amazonaws.com
-          repo: test-repo
-          tag: app
+          account-url: ${AWS_ECR_ACCOUNT_URL}
+          repo: ${AWS_ECR_REPO}
+          tag: ${AWS_ECR_TAG}
           requires:
             - build
