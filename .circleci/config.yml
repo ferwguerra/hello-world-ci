@@ -76,6 +76,7 @@ jobs:
       - aws-ecs/update-service:
           family: 'app-service-fargate'
           cluster-name: 'app-cluster'
+          task-definition: 'app-task-definition-fargate:1'
           container-image-name-updates: 'container=app-container-service,tag=app'
 
 workflows:
