@@ -21,7 +21,7 @@ public class UserController {
     @RequestMapping(value = "/dummy/{id}", method = GET)
     @ResponseBody
     public String dummy(@PathVariable("id") Long id) {
-        return "Variable: " + id;
+        return "Variable cambiada: " + id;
     }
 
     public void setUserService(UserService userService) {
