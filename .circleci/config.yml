@@ -16,4 +16,5 @@ workflows:
           aws-region: '${AWS_REGION}'
           cluster-name: 'app-cluster'
           family: 'app-task-definition-fargate'
+          service-name: 'app-service-fargate'
           container-image-name-updates: 'container=app-container,tag=app'
