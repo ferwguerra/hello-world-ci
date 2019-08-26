@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   aws-ecr: circleci/aws-ecr@0.0.4
+  aws-ecs: circleci/aws-ecs@0.0.10
 
 executors:
   docker-publisher:
@@ -83,3 +84,9 @@ workflows:
           tag: ${AWS_ECR_TAG}
           requires:
             - build
+      - aws-ecs/deploy-service-update:
+          requires:
+            - aws-ecr/build_and_push_image
+          family: 'app-service-fargate'
+          cluster-name: 'app-cluster'
+          container-image-name-updates: 'container=app-container-service,tag=app'
