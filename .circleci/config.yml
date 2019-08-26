@@ -8,7 +8,7 @@ workflows:
       - aws-ecr/build_and_push_image:
           account-url: '${AWS_ECR_ACCOUNT_URL}'
           repo: '${AWS_ECR_REPO}'
-          region: 'us-east-2'
+          region: '${AWS_REGION}'
           tag: '${AWS_ECR_TAG}'
       - aws-ecs/deploy-service-update:
           requires:
