@@ -3,7 +3,6 @@ version: 2.1
 orbs:
   aws-ecr: circleci/aws-ecr@0.0.4
   aws-ecs: circleci/aws-ecs@0.0.10
-  aws-cli: circleci/aws-cli@0.1.4
 
 executors:
   docker-publisher:
@@ -64,21 +63,6 @@ jobs:
               docker push $IMAGE_NAME:latest
 
 
-
-
-  update-tag:
-    executor: docker-publisher
-    steps:
-      - aws-cli/install
-      - aws-cli/configure:
-          aws-access-key-id: $AWS_ACCESS_KEY_ID
-          aws-region: us-east-2
-      - aws-ecs/update-service:
-          family: 'app-service-fargate'
-          cluster-name: 'app-cluster'
-          task-definition: 'app-task-definition-fargate:1'
-          container-image-name-updates: 'container=app-container-service,tag=app'
-
 workflows:
   version: 2
   build-master:
@@ -100,6 +84,9 @@ workflows:
           tag: ${AWS_ECR_TAG}
           requires:
             - build
-      - update-tag:
+      - aws-ecs/update-service:
           requires:
             - aws-ecr/build_and_push_image
+          family: 'app-service-fargate'
+          cluster-name: 'app-cluster'
+          container-image-name-updates: 'container=app-container-service,tag=app'
