@@ -18,6 +18,12 @@ public class UserController {
         return userService.findById(id);
     }
 
+    @RequestMapping(value = "/dummy/{id}", method = GET)
+    @ResponseBody
+    public String dummy(@PathVariable("id") Long id) {
+        return "Variable: " + id;
+    }
+
     public void setUserService(UserService userService) {
         this.userService = userService;
     }
