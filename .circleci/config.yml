@@ -13,6 +13,7 @@ workflows:
       - aws-ecs/deploy-service-update:
           requires:
             - aws-ecr/build_and_push_image
+          aws-region: '${AWS_REGION}'
           family: 'app-service-fargate'
           cluster-name: 'app-cluster'
-          container-image-name-updates: 'container=app-container-service,tag=app'
+          container-image-name-updates: 'container=app-container,tag=app'
