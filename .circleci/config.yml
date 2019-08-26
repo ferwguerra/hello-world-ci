@@ -14,6 +14,6 @@ workflows:
           requires:
             - aws-ecr/build_and_push_image
           aws-region: '${AWS_REGION}'
-          family: 'app-service-fargate'
           cluster-name: 'app-cluster'
+          family: 'app-task-definition-fargate'
           container-image-name-updates: 'container=app-container,tag=app'
